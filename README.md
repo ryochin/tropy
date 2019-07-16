@@ -1,7 +1,7 @@
 Tropy on Rails
 ==============
 
-tropy port.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ```
 bundle install
