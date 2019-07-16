@@ -1,0 +1,9 @@
+<% @title = @entry.title %>
+
+    <% if notice.present? %>
+      <%= tag.p notice, class: :notice %>
+    <% end %>
+
+    <%= tag.h1 @entry.title %>
+
+    <%= tag.p br @entry.body %>

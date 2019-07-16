@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="robots" content="index,nofollow,noarchive">
+<% if protect_against_forgery? %>
+    <%= tag.meta name: 'csrf-param', content: request_forgery_protection_token %>
+    <%= tag.meta name: 'csrf-token', content: form_authenticity_token %>
+<% end %>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <title><%= truncate(@title, length: 48) %> - Tropy</title>
+    <style>
+      body {
+        background-color: <%= @entry&.bgcolor.presence || 'white' %>;
+      }
+    </style>
+  </head>
+  <body>
+<% cache @entry, expires_in: 30.minutes do %>
+    <p id="navi">
+      <%= link_to 'Edit', edit_entry_path(@entry) if (@entry.persisted? && controller.action_name != 'edit') %>
+      <%= link_to 'Create', new_entry_path if controller.action_name != 'new' %>
+      <%= link_to 'Random', entries_path %>
+    </p>
+
+    <%= yield %>
+  </body>
+<% end %>
+</html>

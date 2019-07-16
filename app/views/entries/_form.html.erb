@@ -1,0 +1,14 @@
+<% if entry.errors.any? %>
+    <% entry.errors.each do |type, message| %>
+      <%= tag.p message, class: :error %>
+    <% end %>
+<% end %>
+
+    <%= form_with(model: entry, local: true) do |form| %>
+      <%= form.text_area :content, cols: 100, rows: 16 %>
+
+      <br>
+
+      <%= form.hidden_field :lock_version %>
+      <%= form.submit 'Write' %>
+    <% end %>
