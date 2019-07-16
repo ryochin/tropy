@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
-    @entry = Entry.new(id: '0' * 32)
+    @entry = Entry.new(id: '0' * 16)
   end
 
   # GET /entries/1/edit
