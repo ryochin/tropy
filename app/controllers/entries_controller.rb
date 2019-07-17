@@ -24,7 +24,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
 
     if @entry.save
-      redirect_to @entry, notice: '作ったよ。'
+      render :redirect, layout: false
     else
       render :new
     end
@@ -33,7 +33,7 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1
   def update
     if @entry.update(entry_params)
-      redirect_to @entry, notice: '書き換えたよ。'
+      render :redirect, layout: false
     else
       render :edit
     end

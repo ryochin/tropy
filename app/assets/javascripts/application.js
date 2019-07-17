@@ -36,7 +36,7 @@ function onTimeout() {
 
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("navi").style.visibility = "hidden";
-  setTimeout("onTimeout()", 1 * 1000);
+  setTimeout("onTimeout()", 3 * 1000);    // 5 sec was the original value
 
   window.document.onkeydown = Reload;
 });

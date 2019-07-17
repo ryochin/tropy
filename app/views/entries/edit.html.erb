@@ -1,4 +1,4 @@
-<% @title = 'Edit Entry' %>
+<% @title = truncate(@entry.title, length: 48) %>
 
     <%= tag.h1 @title %>
 

@@ -4,14 +4,20 @@ class Entry < ApplicationRecord
   validates :content,
     presence: {
       message: '内容が ないよう。'
+    },
+    length: {
+      maximum: 1000,
+      message: '内容が ながすぎるよ。'
     }
+
+  validate :check_lines
 
   scope :random, lambda {
     offset(rand(self.count)).first
   }
 
   def self.random_id
-    id = SecureRandom.hex
+    id = SecureRandom.hex(8)
 
     if Entry.where(id: id).exists?
       Entry.random_id
@@ -44,5 +50,13 @@ class Entry < ApplicationRecord
     _title, c = content.split(/\r?\n/, 2)
 
     c&.strip
+  end
+
+  def check_lines
+    return if content.blank?
+
+    if content.to_s.lines.count > 20
+      errors.add :content, '行数が 多すぎるよ。'
+    end
   end
 end
