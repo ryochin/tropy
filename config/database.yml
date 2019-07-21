@@ -24,5 +24,7 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  database: db/production.sqlite3
+  host: db
+  username: postgres
+  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'postgres' } %>
+  database: tropy

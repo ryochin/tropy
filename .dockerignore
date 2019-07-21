@@ -1,0 +1,8 @@
+Dockerfile
+docker-compose.yml
+
+log
+tmp
+db/*.sqlite3
+db/*.sqlite3-journal
+vendor/bundle
