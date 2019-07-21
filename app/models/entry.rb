@@ -12,15 +12,21 @@ class Entry < ApplicationRecord
 
   validate :check_lines
 
+  scope :latest, lambda {
+    order(:created_at).last
+  }
+
   scope :random, lambda {
     offset(rand(self.count)).first
   }
 
   def self.random_id
+    # TODO: lock table
+
     id = SecureRandom.hex(8)
 
-    if Entry.where(id: id).exists?
-      Entry.random_id
+    if where(id: id).exists?
+      random_id
     end
 
     id
