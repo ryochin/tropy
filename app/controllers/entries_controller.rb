@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:index, :show, :edit, :update]
 

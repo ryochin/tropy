@@ -17,7 +17,7 @@ class Entry < ApplicationRecord
   }
 
   scope :random, lambda {
-    offset(rand(self.count)).first
+    offset(rand(count)).first
   }
 
   def self.random_id
