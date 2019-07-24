@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Entry.create!(
-  id: '0' * 8,
+  id: Entry.initial_id,
   content: 'Hello Tropy World'
 )

@@ -14,7 +14,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
-    @entry = Entry.new(id: '0' * 16)
+    @entry = Entry.new(id: Entry.initial_id)
   end
 
   # GET /entries/1/edit

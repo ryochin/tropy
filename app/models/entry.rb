@@ -20,6 +20,10 @@ class Entry < ApplicationRecord
     offset(rand(count)).first
   }
 
+  def self.initial_id
+    '0' * 16
+  end
+
   def self.random_id
     # TODO: lock table
 
