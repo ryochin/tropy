@@ -3,7 +3,7 @@ Tropy on Rails
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-> A simple [Tropy](http://www.hyuki.com/d/200511.html#i20051103183338) clone built on Rails 5.
+> A simple [Tropy](http://www.hyuki.com/d/200511.html#i20051103183338) clone built on Rails 6.
 
 Setup
 -----
