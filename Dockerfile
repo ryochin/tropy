@@ -1,4 +1,4 @@
-FROM ruby:2.6.2-slim-stretch
+FROM ruby:2.7.1-slim-buster
 
 ENV APP_DIR /app
 WORKDIR $APP_DIR
