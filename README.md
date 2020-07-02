@@ -30,7 +30,7 @@ open http://localhost:3000
 docker build -t tropy .
 docker run -d --rm -p 3000:3000 -v $PWD/db:/app/db --name tropy tropy
 docker exec -it tropy bundle exec rails db:migrate
-docker exec -it tropy bundle exec rails db:seed
+docker exec -it tropy bundle exec rails db:seed    # when first run
 
 open http://localhost:3000
 ```
