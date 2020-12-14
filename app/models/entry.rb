@@ -12,9 +12,9 @@ class Entry < ApplicationRecord
 
   validate :check_lines
 
-  scope :latest, lambda {
-    order(:created_at).last
-  }
+  default_scope do
+    order(:created_at)
+  end
 
   scope :random, lambda {
     offset(rand(count)).first
@@ -41,7 +41,7 @@ class Entry < ApplicationRecord
   end
 
   def set_default_value
-    self.id ||= Entry.random_id
+    self.id ||= self.class.random_id
   end
 
   def bgcolor
