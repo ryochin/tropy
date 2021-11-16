@@ -29,11 +29,7 @@ class Entry < ApplicationRecord
 
     id = SecureRandom.hex(8)
 
-    if where(id: id).exists?
-      random_id
-    end
-
-    id
+    where(id: id).exists? ? random_id : id
   end
 
   def content=(value)
