@@ -10,33 +10,33 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
-function Reload(aEvent) {
-  // see http://slashdot.jp/~Motohiko/journal/324775
-  var e = aEvent ? aEvent : window.event;
-  if( e ){
-    // reject when in input fields
-    var tag = (e.target || e.srcElement).tagName;
-    if( tag == 'TEXTAREA' )
-      return;
+const reload = (e) => {
+  if (document.activeElement?.tagName === 'TEXTAREA') return
 
-    switch(e.keyCode){
-      case 37:    // left arrow
-      case 39:    // right arrow
-      case 114:    // r key
-        location.href = location.pathname;    //  reload w/o query string
-        break;
-    }
+  switch (e.key) {
+    case 'ArrowLeft':
+    case 'ArrowRight':
+    case 'r':
+      location.href = location.pathname    //  reload w/o query string
+      break
   }
 }
 
-function onTimeout() {
-  document.getElementById("navi").style.visibility = "visible";
-  window.document.onkeydown = Reload;
+const naviOn = () => {
+  const navi = document.getElementById('navi')
+
+  if (navi) navi.style.visibility = 'visible'
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById("navi").style.visibility = "hidden";
-  setTimeout("onTimeout()", 3 * 1000);    // 5 sec was the original value
+const naviOff = () => {
+  const navi = document.getElementById('navi')
 
-  window.document.onkeydown = Reload;
-});
+  if (navi) navi.style.visibility = 'hidden'
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  naviOff()
+  setTimeout('naviOn()', 3 * 1000)    // 5 sec was the original value
+
+  window.document.onkeydown = reload
+})
