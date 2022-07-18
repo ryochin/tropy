@@ -12,8 +12,8 @@ end
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
