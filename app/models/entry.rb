@@ -25,19 +25,19 @@ class Entry < ApplicationRecord
   end
 
   def self.random_id
-    # TODO: lock table
-
     id = SecureRandom.hex(8)
 
-    where(id: id).exists? ? random_id : id
+    ActiveRecord::Base.transaction do
+      if ActiveRecord::Base.connection_db_config.adapter == 'postgresql'
+        ActiveRecord::Base.connection.execute('LOCK entries IN ACCESS EXCLUSIVE MODE')
+      end
+
+      where(id: id).exists? ? random_id : id
+    end
   end
 
   def content=(value)
     self[:content] = value.to_s.strip
-  end
-
-  def set_default_value
-    self.id ||= self.class.random_id
   end
 
   def bgcolor
@@ -56,6 +56,12 @@ class Entry < ApplicationRecord
     _title, c = content.split(/\r?\n/, 2)
 
     c&.strip
+  end
+
+  private
+
+  def set_default_value
+    self.id ||= self.class.random_id
   end
 
   def check_lines
