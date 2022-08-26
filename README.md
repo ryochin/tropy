@@ -1,14 +1,12 @@
 Tropy on Rails
 ==============
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 > A simple Yuki's [Tropy](http://www.hyuki.com/d/200511.html#i20051103183338) clone built on vanilla [Ruby on Rails](https://rubyonrails.org/) 7.
 
 Live Demo
 ----
 
-https://tropy-app.herokuapp.com
+https://tropy.aquahill.net
 
 Setup
 -----
@@ -37,8 +35,10 @@ The entries are to be stored at `db/development.sqlite3`.
 ### for production: running on Docker
 
 ```sh
+export RAILS_ENV=production
+
 docker-compose build
-docker-compose up
+docker-compose up -d
 docker-compose exec rails bin/rails db:migrate
 docker-compose exec rails bin/rails db:seed    # when first run
 

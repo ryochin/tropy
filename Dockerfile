@@ -1,4 +1,4 @@
-FROM ruby:3.0.0-slim-buster
+FROM ruby:3.1.2-slim-bullseye
 
 ENV APP_DIR /app
 WORKDIR $APP_DIR

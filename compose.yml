@@ -10,12 +10,14 @@ services:
       TZ: Asia/Tokyo
       RAILS_ENV: production
       DATABASE_PASSWORD: postgres
+      RAILS_SERVE_STATIC_FILES: '1'
     volumes:
       - ./config/credentials.yml.enc:/app/config/credentials.yml.enc
       - ./config/master.key:/app/config/master.key
+      - ./log:/app/log
 
   db:
-    image: postgres:12.2
+    image: postgres:14.3
     container_name: tropy-db
     environment:
       TZ: Asia/Tokyo
